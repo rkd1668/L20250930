@@ -3,27 +3,35 @@
 
 using namespace std;
 
-#define WorldStatic					0b00000001
-#define WorldDynamic				0b00000010
-#define Pawn						0b00000100
-#define PhysicsBody					0b00001000
-								//  0b00000100 or
-								//  0b00000100 1> ¡¾¡¿¡¤©ø true
 int main()
 {
-	unsigned char MyActorType = Pawn | PhysicsBody;
-	string MyActorTypes = "Pawn, Physics";
-	if (MyActorType & Pawn)
-	if (MyActorType & Pawn)
-	{
-		cout << "Pawn" << endl;
-	}
-	else
-	{
-		cout << "Pawn X" << endl;
+	int N = 0;
+	unsigned long long X = 0;
+	unsigned long long Result = 0;
 
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> X;
+		unsigned long long NPOT = 2;
+		for (int j = 1; j < 64; j++)
+		{
+			if (NPOT >= X)
+			{
+				if (i == 0)
+				{
+					Result = NPOT;
+				}
+				else
+				{
+					Result = Result ^ NPOT;
+				}
+				break;
+			}
+			NPOT = NPOT << 1;
+		}
 	}
-
+	cout << Result << endl;
 
 	return 0;
 }
