@@ -1,33 +1,29 @@
 #include <iostream>
+#include <bitset>
 
 using namespace std;
 
-int N;
-
+#define WorldStatic					0b00000001
+#define WorldDynamic				0b00000010
+#define Pawn						0b00000100
+#define PhysicsBody					0b00001000
+								//  0b00000100 or
+								//  0b00000100 1> ¡¾¡¿¡¤©ø true
 int main()
 {
-	cin >> N;
-
-	unsigned long long Answer = 0;
-	for (int i = 0; i < N; i++)
+	unsigned char MyActorType = Pawn | PhysicsBody;
+	string MyActorTypes = "Pawn, Physics";
+	if (MyActorType & Pawn)
+	if (MyActorType & Pawn)
 	{
-		unsigned long long X = 0;
-		unsigned long long Y = 1;
-		cin >> X;
-		int Temp = X;
-		while (Temp != 0)
-		{
-			Temp = Temp >> 1;
-			Y = Y << 1;
-		}
-		X = X << 1;
-		if (X == Y)
-		{
-			Y = Y >> 1;
-		}
-		Answer = Answer ^ Y;
+		cout << "Pawn" << endl;
 	}
-	cout << Answer;
+	else
+	{
+		cout << "Pawn X" << endl;
+
+	}
+
 
 	return 0;
 }
