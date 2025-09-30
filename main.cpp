@@ -1,37 +1,97 @@
 #include <iostream>
-#include <bitset>
 
 using namespace std;
 
-int main()
+class Engine
 {
-	int N = 0;
-	unsigned long long X = 0;
-	unsigned long long Result = 0;
+public:
+	World MyWorld;
 
-	cin >> N;
-	for (int i = 0; i < N; i++)
+	void Run()
 	{
-		cin >> X;
-		unsigned long long NPOT = 2;
-		for (int j = 1; j < 64; j++)
+		while (true)
 		{
-			if (NPOT >= X)
-			{
-				if (i == 0)
-				{
-					Result = NPOT;
-				}
-				else
-				{
-					Result = Result ^ NPOT;
-				}
-				break;
-			}
-			NPOT = NPOT << 1;
+			Input();
+			Tick();
+			Render();
 		}
 	}
-	cout << Result << endl;
+	void Input()
+	{
+
+	}
+	void Tick()
+	{
+
+	}
+	void Render()
+	{
+
+	}
+};
+
+class World
+{
+public:
+	Wall MyWall[100];
+	Floor MyFloor[100];
+	Player MyPlayer;
+	Monster MyMonster;
+	Goal MyGoal;
+	void GameOver()
+	{
+
+	}
+};
+
+class Wall 
+{
+public:
+	char WallShape;
+};
+
+class Floor
+{
+public:
+	char FloorShape;
+};
+
+class Player
+{
+public:
+	int PlayerX;
+	int PlayerY;
+	char PlayerShape;
+	void Move()
+	{
+	};
+};
+
+class Monster
+{
+public:
+	int MonsterX;
+	int MonsterY;
+	char MonsterShape;
+	void Move()
+	{
+	};
+};
+
+class Goal
+{
+public:
+	int GoalX;
+	int GoalY;
+};
+
+
+int main()
+{
+	Engine* MyEngine = new Engine();
+	MyEngine -> Run();
+	delete MyEngine;
+	MyEngine = nullptr;
 
 	return 0;
 }
